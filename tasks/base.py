@@ -43,7 +43,9 @@ class Task(ABC):
         expected_answer = self.extract_answer(example.answer)
         equal = self.equal(predicted_answer, expected_answer)
         if not equal:
-            print(expected_answer, predicted_answer)
+            print(f"Example: {example.question}")
+            print(f"Expected: {expected_answer}, Predicted: {predicted_answer}")
+            print(f"Full response: {response}")
         return equal
 
     def evaluate(self, model: str, config: Literal["baseline", "cot", "cod"], shot: int = None) -> float:
