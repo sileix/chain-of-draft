@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument("--task", choices=TASKS.keys())
     parser.add_argument(
         "--model",
-        choices=["gpt-4o", "claude3.5"],
+        # choices=["gpt-4o", "claude3.5"],
         default="claude3.5",
     )
     parser.add_argument(
@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     task = TASKS[args.task]
-    model = MODEL_MAPPING[args.model]
+    model = MODEL_MAPPING.get(args.model, args.model)
     accuracy = task.evaluate(model, args.prompt, args.shot)
     results = [
         [
