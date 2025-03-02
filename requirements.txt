@@ -1,0 +1,6 @@
+anthropic==0.42.0
+datasets==3.2.0
+names-dataset==3.1.0
+openai==1.59.4
+PyYAML==6.0.2
+tqdm==4.67.1

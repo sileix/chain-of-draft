@@ -1,0 +1,47 @@
+system_prompt: |
+  Think step by step, but only keep minimum draft for each thinking step, with 5 words at most.
+  Return the "Yes" or "No" at the end of the response after a separator ####.
+format: |
+  Q: {question}
+  A: {answer}
+fewshot: 
+  - question: |
+      A coin is heads up. Ka flips the coin. Sherrie flips the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 2; even number; Still heads up. 
+      #### Yes
+  - question: |
+      A coin is heads up. Jamey flips the coin. Teressa flips the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 2; even number; Still heads up.
+      #### Yes
+  - question: |
+      A coin is heads up. Maybelle flips the coin. Shalonda does not flip the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 1; odd number; Tails up. 
+      #### No
+  - question: |
+      A coin is heads up. Millicent does not flip the coin. Conception flips the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 1; odd number; Tails up. 
+      #### No
+  - question: |
+      A coin is heads up. Sal flips the coin. Raymond does not flip the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 1; odd number; Tails up. 
+      #### No
+  - question: |
+      A coin is heads up. Conception flips the coin. Kristian does not flip the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 1; odd number; Tails up. 
+      #### No
+  - question: |
+      A coin is heads up. Inga does not flip the coin. Elanor does not flip the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 0; Still heads up. 
+      #### Yes
+  - question: |
+      A coin is heads up. Ryan flips the coin. Shaunda flips the coin. Is the coin still heads up?
+    answer: |
+      Total flip count: 2; even number; Still heads up.
+      #### Yes
