@@ -1,3 +1,5 @@
+import os
+
 from anthropic import Anthropic
 from openai import OpenAI
 
@@ -6,6 +8,10 @@ class LLMClient:
     def __init__(self):
         self.openai_client = OpenAI()
         self.anthropic_client = Anthropic()
+        self.deepinfra_client = OpenAI(
+            api_key=os.getenv("DEEPINFRA_API_KEY"),
+            base_url="https://api.deepinfra.com/v1/openai",
+        )
 
     def request(
         self,
@@ -32,6 +38,15 @@ class LLMClient:
             )
             response = message.content[0].text
             token_count = message.usage.output_tokens
+        elif model.startswith("deepinfra:"):
+            completion = self.deepinfra_client.chat.completions.create(
+                messages=[{"role": "user", "content": payload}],
+                model=model.replace("deepinfra:", ""),
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+            response = completion.choices[0].message.content
+            token_count = completion.usage.completion_tokens
         else:
             raise ValueError("Unrecognized model name: " + model)
         return response, token_count

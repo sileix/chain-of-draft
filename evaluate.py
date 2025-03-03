@@ -72,6 +72,13 @@ if __name__ == "__main__":
     if not os.path.exists("./results"):
         os.makedirs("./results")
 
-    with open(f"./results/{args.task}-{args.model}-{args.prompt}.csv", "w") as f:
+    model_name = args.model.split(":")[1] if ":" in args.model else args.model
+    model_name = model_name.replace("/", "_")
+    fname = (
+        f"{args.task}-{model_name}-{args.prompt}-{args.shot}"
+        if args.shot
+        else f"{args.task}-{model_name}-{args.prompt}"
+    )
+    with open(f"./results/{fname}.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerows(results)
