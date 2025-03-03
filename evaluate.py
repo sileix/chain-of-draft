@@ -19,7 +19,9 @@ TASKS: Dict[str, Task] = {
 
 MODEL_MAPPING = {
     "gpt-4o": "gpt-4o-2024-08-06",
-    "claude3.5": "claude-3-5-sonnet-20240620",
+    "gpt-4o-mini": "gpt-4o-mini-2024-07-18",
+    "sonnet": "claude-3-5-sonnet-20240620",
+    "haiku": "claude-3-5-haiku-20241022",
 }
 
 if __name__ == "__main__":
@@ -27,7 +29,6 @@ if __name__ == "__main__":
     parser.add_argument("--task", choices=TASKS.keys())
     parser.add_argument(
         "--model",
-        # choices=["gpt-4o", "claude3.5"],
         default="claude3.5",
     )
     parser.add_argument(
