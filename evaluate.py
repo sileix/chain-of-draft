@@ -38,7 +38,7 @@ if __name__ == "__main__":
         help="Prompting strategy",
     )
     parser.add_argument(
-        "--shot",
+        "--fewshot",
         type=int,
         default=None,
         help="Number of fewshot to be included, by default, include all fewshot examples",
