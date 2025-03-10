@@ -14,7 +14,7 @@ python evaluate.py \
     --task gsm8k \      # task: gsm8k, date, sports, or coin_flip
     --model gpt-4o \    # model to evaluate
     --prompt cod \      # prompting strategy: baseline, cod, cot 
-    --fewshot 5 \       # optional, # of fewshot examples to include in prompt, include all examples by default if omitted
+    --shot 5 \          # optional, # of fewshot examples to include in prompt, include all examples by default if omitted
 ```
 Currently, the script supports gpt-* models, claude-* models, as well as models hosted by deepinfra and locally, with `deepinfra:` and `local:` prefix, respectively.
 The evaluation results will be stored under `./results/`.
